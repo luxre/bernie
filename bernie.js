@@ -52,8 +52,8 @@ var bernie = {
     var image = bernie.getMetaContent('og:image');
     var paramsObj = {
       shareUrl: shareURL,
-      title: title,
-      text: text,
+      title: escape(title),
+      text: escape(text),
       image: image,
       shareUrlEncoded: function () {
         return encodeURIComponent(this.shareUrl);
@@ -61,17 +61,17 @@ var bernie = {
     };
     switch (service) {
       case 'facebook':
-        return 'https://www.facebook.com/dialog/share?app_id=1120970454650257&display=popup&title=' + title + '&picture=' + image + '&description=' + text + '&href=' + paramsObj.shareUrlEncoded();
+        return 'https://www.facebook.com/dialog/share?app_id=1120970454650257&display=popup&title=' + paramsObj.title + '&picture=' + image + '&description=' + paramsObj.text + '&href=' + paramsObj.shareUrlEncoded();
         break;
       case 'twitter':
         return 'https://twitter.com/intent/tweet?url=' + paramsObj.shareUrlEncoded() +
-          '&text=' + title;
+          '&text=' + paramsObj.title;
         break;
       case 'pinterest':
         return 'javascript:void((function()%7Bvar%20e=document.createElement(&apos;script&apos;);e.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);e.setAttribute(&apos;charset&apos;,&apos;UTF-8&apos;);e.setAttribute(&apos;src&apos;,&apos;http://assets.pinterest.com/js/pinmarklet.js?r=&apos;+Math.random()*99999999);document.body.appendChild(e)%7D)());'
         break;
       case 'flipboard':
-        return 'https://share.flipboard.com/bookmarklet/popout?v=2&title=' + title + '&url=' + paramsObj.shareUrlEncoded() + '&t=1468354418662&utm_campaign=widgets&utm_medium=web&utm_source=flipit&utm_content=0.0.0.0';
+        return 'https://share.flipboard.com/bookmarklet/popout?v=2&title=' + paramsObj.title + '&url=' + paramsObj.shareUrlEncoded();
         break;
       case 'tumblr':
         return 'http://tumblr.com/widgets/share/tool?canonicalUrl=' + paramsObj.shareUrlEncoded();
@@ -80,7 +80,7 @@ var bernie = {
         return 'https://plus.google.com/share?url=' + paramsObj.shareUrlEncoded();
         break;
       case 'email':
-        return 'mailto:?subject=' + title + '&body=' + text + ' - ' + shareURL;
+        return 'mailto:?subject=' + paramsObj.title + '&body=' + paramsObj.text + ' - ' + shareURL;
         break;
     }
   },
