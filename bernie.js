@@ -191,7 +191,9 @@ var bernie = {
         socialLinks.innerHTML = socialLinks.innerHTML + bernie.createButton(options.services[i], options);
       }
     }
-    parent.appendChild(socialLinks);
+    if(parent) {
+      parent.appendChild(socialLinks);
+    }
   }
 
 };
