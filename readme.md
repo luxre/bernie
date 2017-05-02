@@ -31,7 +31,7 @@ The background color of the buttons can be set by using the `color` option. If t
 Default: none (Brand Colors)
 
 **Logo Color**
-The color of the service logos within their parent button can be set using the `fill` option. This can also be set to 'brand' go use the brand color for each logo.
+The color of the service logos within their parent button can be set using the `fill` option. This can also be set to 'brand' to use the brand color for each logo.
 
 Default: `white`
 
