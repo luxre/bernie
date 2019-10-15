@@ -196,4 +196,6 @@ var bernie = {
     }
   }
 
-};
+}
+
+module.export = bernie;
