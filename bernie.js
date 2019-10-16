@@ -198,4 +198,4 @@ var bernie = {
 
 }
 
-module.export = bernie;
+export {bernie};
