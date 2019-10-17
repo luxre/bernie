@@ -27,7 +27,7 @@ var bernie = {
   getMetaContent: function(tagName) {
       var tags = document.getElementsByTagName('meta');
       for (var i = 0; i < tags.length; i++) {
-        if (tags[i].name == tagName) {
+        if (tags[i].getAttribute('property') == tagName) {
           return tags[i].content;
         }
       }
