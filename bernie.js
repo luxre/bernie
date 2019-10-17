@@ -4,7 +4,7 @@
  * https://github.com/luxre/bernie
  */
 
-var supportedServices = ['facebook', 'twitter', 'pinterest', 'flipboard', 'tumblr', 'google-plus', 'email'];
+var supportedServices = ['facebook', 'twitter', 'pinterest', 'linkedin', 'flipboard', 'tumblr', 'google-plus', 'email'];
 
 var defaults = {
   services: ['facebook', 'twitter', 'pinterest', 'flipboard', 'tumblr', 'google-plus', 'email'],
@@ -70,6 +70,9 @@ var bernie = {
       case 'pinterest':
         return 'javascript:void((function()%7Bvar%20e=document.createElement(&apos;script&apos;);e.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);e.setAttribute(&apos;charset&apos;,&apos;UTF-8&apos;);e.setAttribute(&apos;src&apos;,&apos;https://assets.pinterest.com/js/pinmarklet.js?r=&apos;+Math.random()*99999999);document.body.appendChild(e)%7D)());'
         break;
+      case 'linkedin':
+        return 'https://www.linkedin.com/shareArticle?mini=true&url=' + paramsObj.shareUrlEncoded() + '&title=' + paramsObj.title + '&summary=' + paramsObj.text + '&source=' + window.location.hostname;
+        break;
       case 'flipboard':
         return 'https://share.flipboard.com/bookmarklet/popout?v=2&title=' + paramsObj.title + '&url=' + paramsObj.shareUrlEncoded();
         break;
@@ -99,6 +102,9 @@ var bernie = {
         case 'pinterest':
           return 'rgb(203, 32, 39)';
           break;
+        case 'linkedin':
+          return 'rgb(10, 102, 194)';
+          break;
         case 'flipboard':
           return 'rgb(225, 40, 40)';
           break;
@@ -126,6 +132,9 @@ var bernie = {
         break;
       case 'pinterest':
         return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-pinterest" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><path d="M7 13.252c0 1.81.772 4.45 2.895 5.045.074.014.178.04.252.04.49 0 .772-1.27.772-1.63 0-.428-1.174-1.34-1.174-3.123 0-3.705 3.028-6.33 6.947-6.33 3.37 0 5.863 1.782 5.863 5.058 0 2.446-1.054 7.035-4.468 7.035-1.232 0-2.286-.83-2.286-2.018 0-1.742 1.307-3.43 1.307-5.225 0-1.092-.67-1.977-1.916-1.977-1.692 0-2.732 1.77-2.732 3.165 0 .774.104 1.63.476 2.336-.683 2.736-2.08 6.814-2.08 9.633 0 .87.135 1.728.224 2.6l.134.137.207-.07c2.494-3.178 2.405-3.8 3.533-7.96.61 1.077 2.182 1.658 3.43 1.658 5.254 0 7.614-4.77 7.614-9.067C26 7.987 21.755 5 17.094 5 12.017 5 7 8.15 7 13.252z" fill-rule="evenodd"></path></g></svg>';
+        break;
+      case 'linkedin':
+        return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-linkedin" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><path d="m10.32175,26.17959l-4.23438,0l0,-13.63592l4.23438,0l0,13.63592zm-2.11948,-15.49598c-1.35402,0 -2.45227,-1.12151 -2.45227,-2.47553c0,-1.35435 1.09792,-2.45227 2.45227,-2.45227c1.35436,0 2.45228,1.09792 2.45228,2.45227c0,1.35402 -1.09872,2.47553 -2.45228,2.47553zm17.96741,15.49598l-4.22527,0l0,-6.63788c0,-1.58197 -0.0319,-3.61071 -2.20153,-3.61071c-2.20153,0 -2.5389,1.71873 -2.5389,3.49674l0,6.75185l-4.22983,0l0,-13.63592l4.06115,0l0,1.86006l0.05926,0c0.56532,-1.07136 1.94623,-2.20198 4.00643,-2.20198c4.28544,0 5.07323,2.82201 5.07323,6.48743l0,7.49041l-0.00455,0z"></g></svg>';
         break;
       case 'flipboard':
         return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-flipboard" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><g fill-rule="evenodd"></g><path d="M6 6h6.667v20H6z"></path><path opacity=".9" d="M12.667 6H26v6.667H12.667z"></path><path opacity=".7" d="M12.667 12.667h6.667v6.667h-6.667z"></path></g></svg>';
