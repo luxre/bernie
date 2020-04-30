@@ -21,6 +21,12 @@ var defaults = {
 var bernie = {
 
   init: function(options) {
+    if (options) {
+      for (var prop in options) {
+        defaults[prop] = options[prop];
+      }
+    }
+    options = defaults;
     bernie.addButtons(options);
   },
 
@@ -186,12 +192,6 @@ var bernie = {
   },
 
   addButtons: function(options) {
-    if (options) {
-      for (var prop in options) {
-        defaults[prop] = options[prop];
-      }
-    }
-    options = defaults;
     var parent = document.getElementById(options.parentID);
     var socialLinks = document.createElement('div');
     socialLinks.className = 'bernie-social-link-list';
