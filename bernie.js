@@ -28,6 +28,7 @@ var bernie = {
     }
     options = defaults;
     bernie.addButtons(options);
+    bernie.cleanUp(options);
   },
 
   getMetaContent: function(tagName) {
@@ -203,6 +204,15 @@ var bernie = {
     if(parent) {
       parent.appendChild(socialLinks);
     }
+  },
+
+  cleanUp: function(options) {
+    var parent = document.getElementById(options.parentID);
+    var socialLinks = document.getElementById('bernie-social-link-list');
+
+    document.addEventListener('turbolinks:before-cache', function() {
+      parent.removeChild(socialLinks);
+    });
   }
 
 }
