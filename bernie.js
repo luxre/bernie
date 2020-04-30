@@ -194,7 +194,7 @@ var bernie = {
   addButtons: function(options) {
     var parent = document.getElementById(options.parentID);
     var socialLinks = document.createElement('div');
-    socialLinks.className = 'bernie-social-link-list';
+    socialLinks.id = 'bernie-social-link-list';
     for (var i = 0; i < options.services.length; i++) {
       if (supportedServices.indexOf(options.services[i]) != -1) {
         socialLinks.innerHTML = socialLinks.innerHTML + bernie.createButton(options.services[i], options);
