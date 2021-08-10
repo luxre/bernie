@@ -201,9 +201,16 @@ var bernie = {
     var parent = document.getElementById(options.parentID);
     var socialLinks = document.getElementById('bernie-social-link-list');
 
-    document.addEventListener('turbolinks:before-cache', function() {
-      parent.removeChild(socialLinks);
-    });
+    ['turbo:before-cache','turbolinks:before-cache'].forEach( evt =>
+        document.addEventListener(evt, function() {
+          if (socialLinks) {
+            console.log('present');
+            parent.removeChild(socialLinks);
+          } else {
+            console.log('nothing');
+          }
+        }, false)
+    );
   }
 
 }
