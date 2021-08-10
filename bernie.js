@@ -4,10 +4,10 @@
  * https://github.com/luxre/bernie
  */
 
-var supportedServices = ['facebook', 'twitter', 'pinterest', 'linkedin', 'flipboard', 'tumblr', 'google-plus', 'email'];
+var supportedServices = ['facebook', 'twitter', 'pinterest', 'linkedin', 'flipboard', 'tumblr', 'email'];
 
 var defaults = {
-  services: ['facebook', 'twitter', 'pinterest', 'flipboard', 'tumblr', 'google-plus', 'email'],
+  services: ['facebook', 'twitter', 'pinterest', 'flipboard', 'tumblr', 'email'],
   fill: 'white',
   width: 32,
   height: 32,
@@ -86,9 +86,6 @@ var bernie = {
       case 'tumblr':
         return 'http://tumblr.com/widgets/share/tool?canonicalUrl=' + paramsObj.shareUrlEncoded();
         break;
-      case 'google-plus':
-        return 'https://plus.google.com/share?url=' + paramsObj.shareUrlEncoded();
-        break;
       case 'email':
         return 'mailto:?subject=' + paramsObj.title + '&body=' + paramsObj.text + ' - ' + shareURL;
         break;
@@ -118,9 +115,6 @@ var bernie = {
         case 'tumblr':
           return 'rgb(55, 69, 92)';
           break;
-        case 'google-plus':
-          return 'rgb(220, 78, 65)';
-          break;
         case 'email':
           return 'rgb(85, 85, 85)';
           break;
@@ -148,9 +142,6 @@ var bernie = {
         break;
       case 'tumblr':
         return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-tumblr" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><path d="M19.59 22.176c-.392.186-1.14.348-1.695.362-1.682.045-2.008-1.18-2.022-2.07V13.93h4.218v-3.18H15.89V5.403h-3.076c-.05 0-.138.044-.15.157-.18 1.636-.947 4.51-4.133 5.66v2.71h2.124v6.862c0 2.35 1.733 5.688 6.308 5.61 1.544-.028 3.258-.674 3.637-1.23l-1.01-2.996" fill-rule="evenodd"></path></g></svg>';
-        break;
-      case 'google-plus':
-        return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-google-plus" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><path d="M12 15v2.4h3.97c-.16 1.03-1.2 3.02-3.97 3.02-2.39 0-4.34-1.98-4.34-4.42s1.95-4.42 4.34-4.42c1.36 0 2.27.58 2.79 1.08l1.9-1.83C15.47 9.69 13.89 9 12 9c-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.72-2.84 6.72-6.84 0-.46-.05-.81-.11-1.16H12zm15 0h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2z" fill-rule="evenodd"></path></g></svg>';
         break;
       case 'email':
         return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-email" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><g fill-rule="evenodd"></g><path d="M27 22.757c0 1.24-.988 2.243-2.19 2.243H7.19C5.98 25 5 23.994 5 22.757V13.67c0-.556.39-.773.855-.496l8.78 5.238c.782.467 1.95.467 2.73 0l8.78-5.238c.472-.28.855-.063.855.495v9.087z"></path><path d="M27 9.243C27 8.006 26.02 7 24.81 7H7.19C5.988 7 5 8.004 5 9.243v.465c0 .554.385 1.232.857 1.514l9.61 5.733c.267.16.8.16 1.067 0l9.61-5.733c.473-.283.856-.96.856-1.514v-.465z"></path></g></svg>';
