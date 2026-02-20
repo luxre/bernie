@@ -1,13 +1,13 @@
 /*!
- * Bernie.js 1.0.2
- * Copyright 2016 Who's Who in Luxury Real Estate
+ * Bernie.js 1.2.0
+ * Copyright 2026 Who's Who in Luxury Real Estate
  * https://github.com/luxre/bernie
  */
 
-var supportedServices = ['facebook', 'twitter', 'pinterest', 'linkedin', 'flipboard', 'tumblr', 'google-plus', 'email'];
+var supportedServices = ['facebook', 'twitter', 'pinterest', 'linkedin', 'flipboard', 'tumblr', 'email', 'whatsapp'];
 
 var defaults = {
-  services: ['facebook', 'twitter', 'pinterest', 'flipboard', 'tumblr', 'google-plus', 'email'],
+  services: ['facebook', 'twitter', 'pinterest', 'flipboard', 'tumblr', 'email', 'whatsapp'],
   fill: 'white',
   width: 32,
   height: 32,
@@ -86,11 +86,11 @@ var bernie = {
       case 'tumblr':
         return 'http://tumblr.com/widgets/share/tool?canonicalUrl=' + paramsObj.shareUrlEncoded();
         break;
-      case 'google-plus':
-        return 'https://plus.google.com/share?url=' + paramsObj.shareUrlEncoded();
-        break;
       case 'email':
         return 'mailto:?subject=' + paramsObj.title + '&body=' + paramsObj.text + ' - ' + shareURL;
+        break;
+      case 'whatsapp':
+        return 'https://wa.me/?text=' + paramsObj.shareUrlEncoded();
         break;
     }
   },
@@ -118,13 +118,13 @@ var bernie = {
         case 'tumblr':
           return 'rgb(55, 69, 92)';
           break;
-        case 'google-plus':
-          return 'rgb(220, 78, 65)';
-          break;
         case 'email':
           return 'rgb(85, 85, 85)';
           break;
-       }
+        case 'whatsapp':
+          return 'rgb(37, 211, 102)';
+          break;
+      }
     }
   },
 
@@ -149,11 +149,11 @@ var bernie = {
       case 'tumblr':
         return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-tumblr" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><path d="M19.59 22.176c-.392.186-1.14.348-1.695.362-1.682.045-2.008-1.18-2.022-2.07V13.93h4.218v-3.18H15.89V5.403h-3.076c-.05 0-.138.044-.15.157-.18 1.636-.947 4.51-4.133 5.66v2.71h2.124v6.862c0 2.35 1.733 5.688 6.308 5.61 1.544-.028 3.258-.674 3.637-1.23l-1.01-2.996" fill-rule="evenodd"></path></g></svg>';
         break;
-      case 'google-plus':
-        return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-google-plus" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><path d="M12 15v2.4h3.97c-.16 1.03-1.2 3.02-3.97 3.02-2.39 0-4.34-1.98-4.34-4.42s1.95-4.42 4.34-4.42c1.36 0 2.27.58 2.79 1.08l1.9-1.83C15.47 9.69 13.89 9 12 9c-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.72-2.84 6.72-6.84 0-.46-.05-.81-.11-1.16H12zm15 0h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2z" fill-rule="evenodd"></path></g></svg>';
-        break;
       case 'email':
         return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-email" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px;fill:' + fill + ';"><g><g fill-rule="evenodd"></g><path d="M27 22.757c0 1.24-.988 2.243-2.19 2.243H7.19C5.98 25 5 23.994 5 22.757V13.67c0-.556.39-.773.855-.496l8.78 5.238c.782.467 1.95.467 2.73 0l8.78-5.238c.472-.28.855-.063.855.495v9.087z"></path><path d="M27 9.243C27 8.006 26.02 7 24.81 7H7.19C5.988 7 5 8.004 5 9.243v.465c0 .554.385 1.232.857 1.514l9.61 5.733c.267.16.8.16 1.067 0l9.61-5.733c.473-.283.856-.96.856-1.514v-.465z"></path></g></svg>';
+        break;
+      case 'whatsapp':
+        return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="bernie-icon bernie-icon-whatsapp" style="width:'+options.logoSize+'px; height:'+options.logoSize+'px; fill:' + fill + ';"> <g transform="translate(3 3) scale(0.8125)"> <path d="M27.2071429,4.65 C24.2142857,1.65 20.2285714,0 15.9928571,0 C7.25,0 0.135714286,7.11428571 0.135714286,15.8571429 C0.135714286,18.65 0.864285714,21.3785714 2.25,23.7857143 L0,32 L8.40714286,29.7928571 C10.7214286,31.0571429 13.3285714,31.7214286 15.9857143,31.7214286 L15.9928571,31.7214286 C24.7285714,31.7214286 32,24.6071429 32,15.8642857 C32,11.6285714 30.2,7.65 27.2071429,4.65 Z M15.9928571,29.05 C13.6214286,29.05 11.3,28.4142857 9.27857143,27.2142857 L8.8,26.9285714 L3.81428571,28.2357143 L5.14285714,23.3714286 L4.82857143,22.8714286 C3.50714286,20.7714286 2.81428571,18.35 2.81428571,15.8571429 C2.81428571,8.59285714 8.72857143,2.67857143 16,2.67857143 C19.5214286,2.67857143 22.8285714,4.05 25.3142857,6.54285714 C27.8,9.03571429 29.3285714,12.3428571 29.3214286,15.8642857 C29.3214286,23.1357143 23.2571429,29.05 15.9928571,29.05 Z M23.2214286,19.1785714 C22.8285714,18.9785714 20.8785714,18.0214286 20.5142857,17.8928571 C20.15,17.7571429 19.8857143,17.6928571 19.6214286,18.0928571 C19.3571429,18.4928571 18.6,19.3785714 18.3642857,19.65 C18.1357143,19.9142857 17.9,19.95 17.5071429,19.75 C15.1785714,18.5857143 13.65,17.6714286 12.1142857,15.0357143 C11.7071429,14.3357143 12.5214286,14.3857143 13.2785714,12.8714286 C13.4071429,12.6071429 13.3428571,12.3785714 13.2428571,12.1785714 C13.1428571,11.9785714 12.35,10.0285714 12.0214286,9.23571429 C11.7,8.46428571 11.3714286,8.57142857 11.1285714,8.55714286 C10.9,8.54285714 10.6357143,8.54285714 10.3714286,8.54285714 C10.1071429,8.54285714 9.67857143,8.64285714 9.31428571,9.03571429 C8.95,9.43571429 7.92857143,10.3928571 7.92857143,12.3428571 C7.92857143,14.2928571 9.35,16.1785714 9.54285714,16.4428571 C9.74285714,16.7071429 12.3357143,20.7071429 16.3142857,22.4285714 C18.8285714,23.5142857 19.8142857,23.6071429 21.0714286,23.4214286 C21.8357143,23.3071429 23.4142857,22.4642857 23.7428571,21.5357143 C24.0714286,20.6071429 24.0714286,19.8142857 23.9714286,19.65 C23.8785714,19.4714286 23.6142857,19.3714286 23.2214286,19.1785714 Z"/></g></svg>';
         break;
     }
     var image = '<img src="http://logok.org/wp-content/uploads/2014/04/Apple-Logo-rainbow.png" width=32 height=32 title="' + service + '"/>';
