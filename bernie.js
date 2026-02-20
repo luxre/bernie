@@ -1,5 +1,5 @@
 /*!
- * Bernie.js 1.1.0
+ * Bernie.js 1.2.0
  * Copyright 2026 Who's Who in Luxury Real Estate
  * https://github.com/luxre/bernie
  */
